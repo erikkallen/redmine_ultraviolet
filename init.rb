@@ -2,7 +2,8 @@ require 'redmine'
 
 require 'uv'
 require 'ultraviolet_syntax_patch'
-
+require 'redmine_class_parse_patch'
+RAILS_DEFAULT_LOGGER.info "Starting redmine ultraviolet plugin"
 Redmine::Plugin.register :redmine_ultraviolet do
   name "Redmine Ultraviolet Syntax highlighting plugin"
   author "Chris Gahan, Andy Bailey"

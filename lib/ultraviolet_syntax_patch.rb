@@ -36,6 +36,7 @@ module Uv
   ]
 
   def Uv.syntax_for_file file_name, content=nil
+    
     init_syntaxes unless @syntaxes
     
     f = content ? StringIO.new(content) : open(file_name)
@@ -93,7 +94,6 @@ module UltravioletSyntaxPatch
         else
           syntax_name = syntaxes.first.first
         end
-        #puts "hello"
         # Usage: Uv.parse(text, output="xhtml", syntax_name=nil, line_numbers=false, render_style="classic", headers=false)
         Uv.parse(content, "xhtml", syntax_name, true, get_uv_theme_name)
       end
@@ -101,7 +101,6 @@ module UltravioletSyntaxPatch
       def highlight_by_language(content,syntax_name)
         ## See: http://ultraviolet.rubyforge.org/svn/lib/uv.rb 
         ## See: http://ultraviolet.rubyforge.org/themes.xhtml
-      
         ## User selection of UV Theme
         # Usage: Uv.parse(text, output="xhtml", syntax_name=nil, line_numbers=false, render_style="classic", headers=false)
         if Uv.syntaxes.include? syntax_name
