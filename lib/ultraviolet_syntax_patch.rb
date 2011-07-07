@@ -9,7 +9,21 @@ require_dependency 'uv'
 # * Add THEMES and DEFAULT_THEME
 #
 module Uv
-  
+  class RenderProcessor
+      def escape string
+         if @render_options["filter"] && !@@no_escape
+            @escaped = string
+            @escaped = self.instance_eval( @render_options["filter"] )
+            @escaped
+         else
+            string
+         end
+      end
+
+      def self.setescape(e)
+        @@no_escape = !e
+      end 
+  end
   DEFAULT_THEME = "mac_classic"
   THEMES = %w[
     active4d
