@@ -133,7 +133,8 @@ module UltravioletSyntaxPatch
       end
       
       def get_uv_theme_name
-        uv_theme_name = User.current.custom_value_for(CustomField.first(:conditions => {:name => 'Ultraviolet Theme'})) || Uv::DEFAULT_THEME
+        default_theme_custom_field = CustomField.first(:conditions => {:name => 'Ultraviolet Theme'})
+        uv_theme_name = User.current.custom_value_for(default_theme_custom_field) || default_theme_custom_field.default_value || Uv::DEFAULT_THEME
         return uv_theme_name
       end
     end
