@@ -12,7 +12,11 @@
 </style>
 
 <div class="uv-file">
-  <%= syntax_highlight(filename, to_utf8(content)) %>
+  <% if local_assigns.has_key? :to_utf8 %>
+    <%= syntax_highlight(filename, to_utf8(content)) %>
+  <% else %>
+    <%= syntax_highlight(filename, to_utf8_for_repositories(content)) %>
+  <% end %>
 </div>
 
 <% content_for :header_tags do %>
